@@ -24,14 +24,17 @@ jobs:
         run: npm install -g eas-cli
 
       - name: Authenticate with Expo
-        run: |
-          eas whoami || eas login --token ${{ secrets.EXPO_TOKEN }}
+        run: eas whoami || echo "Using token from env"
+        env:
+          EXPO_TOKEN: ${{ secrets.EXPO_TOKEN }}
 
       - name: Install dependencies
         run: npm install
 
       - name: Build APK
         run: eas build --platform android --non-interactive --profile preview
+        env:
+          EXPO_TOKEN: ${{ secrets.EXPO_TOKEN }}
 
       - name: Upload artifact
         uses: actions/upload-artifact@v4
