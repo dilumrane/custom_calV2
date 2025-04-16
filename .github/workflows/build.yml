@@ -1,18 +1,21 @@
-name: Build Expo Android APK
+name: build-android
 
 on:
-  workflow_dispatch:
+  push:
+    branches:
+      - main
 
 jobs:
-  build-android:
+  build:
+    name: Build Android APK
     runs-on: ubuntu-latest
 
     steps:
       - name: Checkout Repo
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
 
       - name: Set up Node.js
-        uses: actions/setup-node@v3
+        uses: actions/setup-node@v4
         with:
           node-version: 18
 
@@ -20,16 +23,16 @@ jobs:
         run: npm install -g eas-cli
 
       - name: Authenticate with Expo
-        run: eas whoami || eas login --access-token ${{ secrets.EAS_TOKEN }}
+        run: eas login --access-token ${{ secrets.EAS_TOKEN }}
 
       - name: Install dependencies
         run: npm install
 
       - name: Build APK
-        run: eas build --platform android --non-interactive
+        run: eas build --platform android --profile preview --non-interactive
 
       - name: Upload artifact
         uses: actions/upload-artifact@v4
         with:
-          name: apk-build
-          path: dist/**/*.apk
+          name: android-apk
+          path: dist
