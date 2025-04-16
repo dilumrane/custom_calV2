@@ -4,7 +4,6 @@ import { useRouter } from 'expo-router';
 import { useCalculatorStore } from '@/store/calculator-store';
 import CalculatorCard from '@/components/CalculatorCard';
 import EmptyState from '@/components/EmptyState';
-import AdBanner from '@/components/AdBanner';
 import PrebuiltCalculatorsModal from '@/components/PrebuiltCalculatorsModal';
 import Colors from '@/constants/colors';
 
@@ -44,7 +43,6 @@ export default function HomeScreen() {
           visible={prebuiltModalVisible} 
           onClose={closePrebuiltModal} 
         />
-        <AdBanner />
       </View>
     );
   }
@@ -83,7 +81,6 @@ export default function HomeScreen() {
           </View>
         }
       />
-      <AdBanner />
     </SafeAreaView>
   );
 }

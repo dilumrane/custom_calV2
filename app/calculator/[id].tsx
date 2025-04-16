@@ -6,7 +6,6 @@ import { useCalculatorStore } from '@/store/calculator-store';
 import { FormulaParser } from '@/utils/formula-parser';
 import Input from '@/components/Input';
 import Button from '@/components/Button';
-import AdBanner from '@/components/AdBanner';
 import Colors from '@/constants/colors';
 
 export default function CalculatorScreen() {
@@ -163,7 +162,6 @@ export default function CalculatorScreen() {
             </View>
           )}
         </ScrollView>
-        <AdBanner />
       </SafeAreaView>
     </>
   );

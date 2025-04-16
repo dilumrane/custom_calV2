@@ -8,7 +8,6 @@ import { FormulaParser } from '@/utils/formula-parser';
 import Input from '@/components/Input';
 import Button from '@/components/Button';
 import FormulaInput from '@/components/FormulaInput';
-import AdBanner from '@/components/AdBanner';
 import Colors from '@/constants/colors';
 
 export default function EditCalculatorScreen() {
@@ -223,7 +222,6 @@ export default function EditCalculatorScreen() {
             fullWidth={true}
           />
         </ScrollView>
-        <AdBanner />
       </SafeAreaView>
     </>
   );
